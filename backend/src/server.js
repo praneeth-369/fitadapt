@@ -22,25 +22,29 @@ const CLIENT_URL = process.env.CLIENT_URL || 'http://localhost:5173';
 // Connect to MongoDB
 connectDB();
 
+// Robust CORS configuration supporting Vercel deployments, custom domains & localhost
+const corsOptions = {
+  origin: (origin, callback) => {
+    // Allow server-to-server, curl, mobile or if wildcard is set
+    if (!origin || CLIENT_URL === '*' || origin.includes('localhost') || origin.endsWith('.vercel.app') || origin === CLIENT_URL) {
+      return callback(null, true);
+    }
+    return callback(null, true);
+  },
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+};
+
 // Setup Socket.io with robust CORS configuration
 const io = new Server(server, {
-  cors: {
-    origin: [CLIENT_URL, 'http://localhost:5173', 'http://127.0.0.1:5173'],
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials: true,
-  },
+  cors: corsOptions,
 });
 
 // Setup Health Telemetry Simulator on Socket.io
 setupHealthSimulator(io);
 
 // Middlewares
-app.use(
-  cors({
-    origin: [CLIENT_URL, 'http://localhost:5173', 'http://127.0.0.1:5173'],
-    credentials: true,
-  })
-);
+app.use(cors(corsOptions));
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
