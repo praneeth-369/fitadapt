@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+    background-color: #06080e;
+    color: #f1f5f9;
+  }
+
+  h1, h2, h3, h4, h5, h6, .font-cyber {
+    font-family: 'Chakra Petch', sans-serif;
+    letter-spacing: 0.04em;
+  }
+}
+
+/* =========================================================
+   DARK THEME: CYBERPUNK SLEEK DARK MODE (PERMANENT)
+   ========================================================= */
+html,
+html.dark {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  background-color: #06080e !important;
+  color: #f1f5f9 !important;
+}
+
+/* Global Select & Dropdown Styling (Ensures Energy & Duration options are always clearly visible) */
+select {
+  color-scheme: dark !important;
+  background-color: #0d111a !important;
+  color: #f1f5f9 !important;
+}
+
+select option {
+  background-color: #0d111a !important;
+  color: #f1f5f9 !important;
+  padding: 6px 12px !important;
+}
+
+.cyber-card {
+  background: rgba(19, 24, 38, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 255, 157, 0.18);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45);
+  color: #f1f5f9;
+  transition: all 0.3s ease;
+}
+
+.cyber-card-cyan {
+  background: rgba(19, 24, 38, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 229, 255, 0.22);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45);
+  color: #f1f5f9;
+  transition: all 0.3s ease;
+}
+
+.cyber-button-green {
+  background: linear-gradient(135deg, #00ff9d 0%, #00b368 100%);
+  color: #06080e;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  box-shadow: 0 0 15px rgba(0, 255, 157, 0.4);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cyber-button-green:hover {
+  box-shadow: 0 0 25px rgba(0, 255, 157, 0.7);
+  transform: translateY(-1px);
+}
+
+.cyber-button-cyan {
+  background: linear-gradient(135deg, #00e5ff 0%, #0099b8 100%);
+  color: #06080e;
+  box-shadow: 0 0 15px rgba(0, 229, 255, 0.4);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0e17;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 9999px;
+  border: 1px solid rgba(0, 255, 157, 0.2);
+}
